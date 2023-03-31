@@ -30,7 +30,7 @@ reg.addEventListener('click', (e) => {
   e.preventDefault()
 
   signOut(auth).then(() => {
-    alert('signed out')
+//     alert('signed out')
   }).catch((error) => {
     alert('Some error has occured')
   });
@@ -47,8 +47,7 @@ console.log(docSnap.data().hs)
 const highRef = collection(db, "HighScores");
 
 await setDoc(doc(highRef, cUser), {
-  name: cUser, hs: 0 ,
-  regions: [0,7,68.999,88888]
+  name: cUser, hs: 0
 })
 
 //Bgm
