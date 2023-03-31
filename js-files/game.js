@@ -217,4 +217,8 @@ window.addEventListener("keyup",(e) =>{
     document.getElementById('jumpA').play();
   }
   
-});   
+});
+window.addEventListener("touchstart", reset, { once: true });
+window.addEventListener("touchstart", (e) => {
+  document.getElementById('jumpA').play();
+ });
