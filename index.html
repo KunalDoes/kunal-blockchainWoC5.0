@@ -36,7 +36,7 @@
                     </div>
                     <button id="login">Log in</button>
                     <div class="register">
-                        <p>Don't have a account?<a href="/register.html">Register</a></p>
+                        <p id="regis">Don't have a account? Register</p>
                     </div>
                 </form>
             </div>
@@ -107,6 +107,9 @@
                 const errorMessage = error.message;
                 // ..
             });
+    }
+    document.getElementById('regis').onclick = () => {
+        location.replace("./register.html");
     }
 </script>
 
