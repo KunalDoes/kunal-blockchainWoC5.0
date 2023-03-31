@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABB8EAA6RDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAIAAAAAAAAAIgAAAAAAAAAiIAAiAAAAAiIiIiAAAAAiIiIiAAAAAiIiIiIAAAACIAACIiIiICIAAAAiIAACIAAAAAIiIiIAAAAAAiEiIgAAAAAAIiIAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAPz/AAD9/wAA+f8AAPjnAADwDwAA4B8AAMAfAADPAAAAn48AAD/AAAB/wAAAf+EAAP//AAD//wAA"
+        rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="./css-files/index.css">
+    <title>Welcome to Kunal's Project</title>
+</head>
+
+<body>
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="">
+                    <h2>Login</h2>
+                    <span id="error" style="color:red;"></span>
+                    <div class="inputbox">
+                        <input type="email" required id="email">
+                        <label for="">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" required id="password">
+                        <label for="">Password</label>
+                    </div>
+                    <div class="forget">
+                        <label for="">
+                            <!-- <input type="checkbox">Remember Me  -->
+                            <span id="forgetp" style = "cursor: pointer;">Forgot
+                                Password ?</span></label>
+
+                    </div>
+                    <button id="login">Log in</button>
+                    <div class="register">
+                        <p>Don't have a account?<a href="/register.html">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+<script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBJrBcaQ27FB-r-2iWtcIOBK5GgZQx-NGQ",
+        authDomain: "t-rexauth.firebaseapp.com",
+        projectId: "t-rexauth",
+        storageBucket: "t-rexauth.appspot.com",
+        messagingSenderId: "567916191944",
+        appId: "1:567916191944:web:9f81982636bc85849b05fd"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const reg = document.getElementById('login');
+    const check = true;
+    reg.addEventListener('click', (e) => {
+        e.preventDefault()
+        console.log('click')
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log('user success');
+                document.getElementById('error').innerHTML = "Welcome to the other - side"
+                // location.replace("./game.html");
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                document.getElementById("error").innerHTML = errorMessage;
+            });
+
+    })
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            location.replace("./game.html");
+            const uid = user.uid;
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
+
+    document.getElementById('forgetp').onclick = () => {
+        let email = document.getElementById('email').value;
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert('task done');
+                // Password reset email sent!
+                // ..
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+    }
+</script>
+
+</html>

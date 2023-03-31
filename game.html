@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Project</title>
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      background: url("Cyberpunk-color-palettes_02.jpg") no-repeat;
+      background-position: center;
+      background-size: auto;
+
+      user-select: none;
+      touch-action: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      outline: none;
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    }
+
+    canvas {
+      /* border: 0.1px solid grey; */
+      background: transparent;
+    }
+
+    a {
+      color: rgb(161, 157, 157);
+    }
+
+    .separator {
+      color: grey;
+    }
+
+    button {
+      height: 50px;
+      width: 120px;
+      backdrop-filter: blur;
+      background: transparent;
+      color: rgba(222, 189, 96, 0.895);
+      font-family: Cyberpunk;
+      font-size: 2rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .high-display {
+      font-size: 2rem;
+      font-family: Cyberway Riders;
+      color: #fff;
+      text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px rgb(128, 0, 119),
+        0 0 30px rgb(128, 0, 119),
+        0 0 40px rgb(128, 0, 119),
+        0 0 55px rgb(128, 0, 119),
+        0 0 70px rgb(128, 0, 119);
+        position:relative; right:600px
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2.4rem;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px rgba(218, 197, 37, 0.852),
+        0 0 30px rgba(218, 197, 37, 0.852),
+        0 0 40px rgba(218, 197, 37, 0.852),
+        0 0 55px rgba(218, 197, 37, 0.852),
+        0 0 70px rgba(218, 197, 37, 0.852);
+    }
+  </style>
+  <script src="./js-files/game.js" defer type="module"></script>
+</head>
+<button style = " background: transparent; font-family: Cyberpunk; font-size: 1.8rem; color: #fff; position:relative; left:650px" id = "muse">Music:Off</button>
+<body>
+  <h1 id="welcome">Welcome, email</h1>
+  <div class="high-display">
+    <ol type="1">
+      Score Board
+      <li id="first">-</li>
+      <li id="second">-</li>
+      <li id="third">-</li>
+    </ol>
+  </div>
+  <canvas id="game"></canvas>
+  <button id="logout-but">Logout</button>
+  <audio src="./audio-files/beginnig-sound.wav" style = "display:none" type="audio/mpeg" id = "startA"></audio>
+  <audio src="./audio-files/jump-noise.wav" style = "display:none" type="audio/mpeg" id = "jumpA"></audio>
+  <audio src="./audio-files/end-gameOver.wav" style = "display:none" type="audio/mpeg" id = "gameOverA"></audio>
+  <audio src="./audio-files/Stranger_Things.mp3" style = "display:none" type="audio/mpeg" id = "strangertA"></audio>
+
+</body>
+<script type="module" src="./js-files/intro.js">
+
+  // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+  // import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+  // import { getFirestore, doc, setDoc, collection, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-firestore.js";
+
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyBJrBcaQ27FB-r-2iWtcIOBK5GgZQx-NGQ",
+  //   authDomain: "t-rexauth.firebaseapp.com",
+  //   projectId: "t-rexauth",
+  //   storageBucket: "t-rexauth.appspot.com",
+  //   messagingSenderId: "567916191944",
+  //   appId: "1:567916191944:web:9f81982636bc85849b05fd"
+  // };
+
+  // const app = initializeApp(firebaseConfig);
+  // const auth = getAuth(app);
+  // let cUser = "";
+
+  // const reg = document.getElementById('logout-but');
+  // //to - check if the user is logged in
+  // onAuthStateChanged(auth, (user) => {
+  //   if (!user) {
+  //     location.replace("./index.html");
+  //   }
+  //   else {
+  //     document.getElementById('welcome').innerHTML = "Welcome, " + user.email;
+  //     cUser = user.email;
+  //   }
+  // });
+  // reg.addEventListener('click', (e) => {
+  //   e.preventDefault()
+
+  //   signOut(auth).then(() => {
+  //     alert('signed out')
+  //   }).catch((error) => {
+  //     alert('Some error has occured')
+  //   });
+
+  // });
+  // // accessing database
+
+  // const db = getFirestore(app);
+
+  // const docRef = doc(db, "HighScores", "test@gmail.com")
+  // const docSnap = await getDoc(docRef)
+  // console.log(docSnap.data().hs)
+
+  // const highRef = collection(db, "HighScores");
+
+  // await setDoc(doc(highRef, cUser), {
+  //   name: cUser, hs: 0 ,
+  //   regions: [0,7,68.999,88888]
+  // })
+
+  // //Bgm
+  // let cou = 0
+  // document.getElementById('muse').addEventListener('click',(e) => {
+  //   console.log('cou')
+  //   if((cou%2) == 0)
+  //   {
+      
+  //     document.getElementById("strangertA").play()
+  //     document.getElementById('muse').innerHTML = "Music:On"
+  //   }
+  //   else
+  //   {
+  //     document.getElementById("strangertA").pause()
+  //     document.getElementById('muse').innerHTML = "Music:Off"
+
+  //     // document.getElementById("strangertA").currentTime = 0
+  //   }
+  //   cou++
+  // })
+
+</script>
+</html>   
