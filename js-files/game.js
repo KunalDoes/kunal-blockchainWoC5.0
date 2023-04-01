@@ -2,12 +2,14 @@ import Player from "./Player.js";
 import Ground from "./Ground.js";
 import CactiController from "./CactiController.js";
 import Score from "./Score.js";
+import UpdateStore from "./intro.js";
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 let newImage = new Image();
 newImage.src = './Cyberpunk-color-palettes_test-2.jpg'
+let hs = 0;
 const GAME_SPEED_START = 1; // 1.0
 const GAME_SPEED_INCREMENT = 0.00001;
 
@@ -195,8 +197,9 @@ function gameLoop(currentTime) {
   cactiController.draw();
   player.draw();
   score.draw();
-
-  if (gameOver) {
+  const scset = new UpdateStore()
+  if (gameOver) { 
+    scset.setterSc(Math.floor(score.scoreGetter()))
     showGameOver();
   }
 

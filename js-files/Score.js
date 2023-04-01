@@ -39,4 +39,8 @@ export default class Score {
     this.ctx.fillText(`Score ${scorePadded}`, scoreX, y);
     this.ctx.fillText(`HI ${highScorePadded}`, highScoreX, y);
   }
+  scoreGetter()
+  {
+    return this.score;
+  }
 }

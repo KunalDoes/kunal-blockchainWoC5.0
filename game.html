@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<link
-        href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABB8EAA6RDAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAIAAAAAAAAAIgAAAAAAAAAiIAAiAAAAAiIiIiAAAAAiIiIiAAAAAiIiIiIAAAACIAACIiIiICIAAAAiIAACIAAAAAIiIiIAAAAAAiEiIgAAAAAAIiIAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAPz/AAD9/wAA+f8AAPjnAADwDwAA4B8AAMAfAADPAAAAn48AAD/AAAB/wAAAf+EAAP//AAD//wAA"
-        rel="icon" type="image/x-icon" />
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -15,20 +13,19 @@
     }
     @font-face 
     {
-     font-family: "Cyberpunk";
-     src: local("Cyberpunk"),
-     url("./fonts-folder/Cyberpunk.ttf") format("truetype");
-     font-weight: bold;
+      font-family: "Cyberpunk";
+      src: local("Cyberpunk"),
+      url("./fonts-folder/Cyberpunk.ttf") format("truetype");
+      font-weight: bold;
     }
 
     @font-face 
     {
-     font-family: "Cyberway Riders";
-     src: local("Cyberway Riders"),
-     url("./fonts-folder/CyberwayRiders-lg97d.ttf") format("truetype");
-     font-weight: bold;
-     }
-
+      font-family: "Cyberway Riders";
+      src: local("Cyberway Riders"),
+      url("./fonts-folder/CyberwayRiders-lg97d.ttf") format("truetype");
+      font-weight: bold;
+    }
 
     body {
       display: flex;
@@ -89,8 +86,8 @@
         0 0 40px rgb(128, 0, 119),
         0 0 55px rgb(128, 0, 119),
         0 0 70px rgb(128, 0, 119);
-        position:relative; right:80vh 
-    }
+        position:relative; right:73vh    
+      }
 
     h1 {
       color: #fff;
@@ -126,9 +123,9 @@
   <audio src="./audio-files/Stranger_Things.mp3" style = "display:none" type="audio/mpeg" id = "strangertA"></audio>
 
 </body>
-<script>import './fonts-folder/Cyberpunk.ttf';
-        import './fonts-folder/CyberwayRiders-lg97d.ttf';
-</script>       
-<script type="module" src="./js-files/intro.js">
+<script> 
+  import './fonts-folder/Cyberpunk.ttf';
+  import './fonts-folder/CyberwayRiders-lg97d.ttf';
 </script>
-</html>   
+<script type="module" src="./js-files/intro.js"></script>
+</html>  
