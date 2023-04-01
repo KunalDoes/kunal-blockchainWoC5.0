@@ -13,13 +13,22 @@
       padding: 0px;
       margin: 0px;
     }
-    @font-face {
-    font-family: F16;
-    src: url("../../fonts-folder/Cyberpunk.ttf") format('truetype');
-    src: url("../../fonts-folder/CyberwayRiders-lg97d.ttf") format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
+    @font-face 
+    {
+     font-family: "Cyberpunk";
+     src: local("Cyberpunk"),
+     url("./fonts-folder/Cyberpunk.ttf") format("truetype");
+     font-weight: bold;
+    }
+
+    @font-face 
+    {
+     font-family: "Cyberway Riders";
+     src: local("Cyberway Riders"),
+     url("./fonts-folder/CyberwayRiders-lg97d.ttf") format("truetype");
+     font-weight: bold;
+     }
+
 
     body {
       display: flex;
@@ -117,6 +126,9 @@
   <audio src="./audio-files/Stranger_Things.mp3" style = "display:none" type="audio/mpeg" id = "strangertA"></audio>
 
 </body>
+<script>import './fonts-folder/Cyberpunk.ttf';
+        import './fonts-folder/CyberwayRiders-lg97d.ttf';
+</script>       
 <script type="module" src="./js-files/intro.js">
 </script>
 </html>   
